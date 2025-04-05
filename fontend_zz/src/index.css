@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'SuperMario256';
+  src: url('https://dl.dropboxusercontent.com/s/tg2yt6hv7qmkkxu/super_mario_256.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-pixel {
+  font-family: 'SuperMario256', system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.pixel-font {
+  font-family: 'SuperMario256', system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
