@@ -6,8 +6,6 @@ const MainMenu: React.FC = () => {
     { icon: <Car className="w-6 h-6" />, label: 'RACE' },
     { icon: <Wrench className="w-6 h-6" />, label: 'GARAGE' },
     { icon: <Store className="w-6 h-6" />, label: 'DEALERSHIP' },
-    { icon: <Trophy className="w-6 h-6" />, label: 'PARTS STORE' },
-    { icon: <Settings className="w-6 h-6" />, label: 'OPTIONS' },
   ];
 
   return (

@@ -30,34 +30,43 @@ const GameCanvas: React.FC = () => {
       ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(width), Math.floor(height));
     };
 
-    // Draw car body with pixel art style
+    // Draw car with pixel art style
     const drawCar = (x: number, y: number, bounce: number) => {
-      const scale = 4; // Pixel scale factor
-      
       // Car shadow
       drawPixelRect(x - 5, y + 70 - bounce/2, 110, 10, 'rgba(0,0,0,0.2)');
-
-      // Main body
-      drawPixelRect(x, y + bounce, 100, 30, colors.body);
-      drawPixelRect(x + 20, y - 20 + bounce, 60, 25, colors.body);
-      
-      // Windows
+    
+      // --- Spoiler ---
+      drawPixelRect(x - 10, y - 10 + bounce, 10, 5, colors.shadow); // spoiler support
+      drawPixelRect(x - 15, y - 15 + bounce, 20, 5, colors.body); // main spoiler
+    
+      // --- Main Body ---
+      drawPixelRect(x, y + bounce, 100, 30, colors.body); // bottom body
+      drawPixelRect(x + 20, y - 20 + bounce, 60, 25, colors.body); // top part (cabin)
+    
+      // --- Front slope (angled hood) ---
+      drawPixelRect(x + 80, y - 10 + bounce, 20, 10, colors.body);
+    
+      // --- Roof scoop (air intake) ---
+      drawPixelRect(x + 40, y - 25 + bounce, 20, 5, colors.shadow);
+    
+      // --- Windows ---
       drawPixelRect(x + 25, y - 15 + bounce, 20, 15, colors.windows);
       drawPixelRect(x + 55, y - 15 + bounce, 20, 15, colors.windows);
-      
-      // Body highlights
-      drawPixelRect(x + 5, y + 5 + bounce, 90, 5, colors.highlights);
-      
-      // Wheels with animation
+    
+      // --- Racing stripe ---
+      drawPixelRect(x + 10, y + bounce + 2, 5, 26, colors.highlights);
+      drawPixelRect(x + 85, y + bounce + 2, 5, 26, colors.highlights);
+    
+      // --- Wheels ---
       const wheelOffset = Math.sin(Date.now() / 100) * 2;
       drawPixelRect(x + 15, y + 25 + bounce + wheelOffset, 25, 25, colors.wheels);
       drawPixelRect(x + 60, y + 25 + bounce + wheelOffset, 25, 25, colors.wheels);
-      
-      // Wheel rims
+    
+      // --- Rims ---
       drawPixelRect(x + 22, y + 32 + bounce + wheelOffset, 11, 11, colors.rims);
       drawPixelRect(x + 67, y + 32 + bounce + wheelOffset, 11, 11, colors.rims);
-      
-      // Speed lines
+    
+      // --- Speed lines ---
       ctx.strokeStyle = colors.highlights;
       ctx.lineWidth = 3;
       for (let i = 0; i < 3; i++) {
@@ -68,6 +77,7 @@ const GameCanvas: React.FC = () => {
         ctx.stroke();
       }
     };
+    
 
     // Draw road with pixel art style
     const drawRoad = () => {

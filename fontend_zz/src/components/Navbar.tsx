@@ -1,5 +1,5 @@
 import React from 'react';
-import { Coins, Diamond, DollarSign } from 'lucide-react';
+import { Coins, Diamond, DollarSign, Settings } from 'lucide-react';
 
 interface NavbarProps {
   coins: number;
@@ -33,6 +33,13 @@ const Navbar: React.FC<NavbarProps> = ({ coins, diamonds, money, address }) => {
               <span className="text-white font-pixel text-sm">{money.toLocaleString()}</span>
             </div>
           </div>
+
+          {/* Options Button */}
+          <button className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg 
+                             hover:bg-gray-700 transition-all duration-200">
+            <Settings className="w-5 h-5 text-white" />
+            <span className="font-pixel text-sm">OPTIONS</span>
+          </button>
         </div>
       </div>
     </nav>
