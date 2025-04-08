@@ -1,7 +1,10 @@
 import React from 'react';
-import { Car, Wrench, Store, Settings, Trophy } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Car, Wrench, Store } from 'lucide-react';
 
 const MainMenu: React.FC = () => {
+  const navigate = useNavigate();
+
   const menuItems = [
     { icon: <Car className="w-6 h-6" />, label: 'RACE' },
     { icon: <Wrench className="w-6 h-6" />, label: 'GARAGE' },
@@ -10,11 +13,12 @@ const MainMenu: React.FC = () => {
 
   const handleMenuClick = (label: string) => {
     if (label === 'GARAGE') {
-      // เปลี่ยนเป็นการนำทางไปหน้า garage (ใช้ router ได้ถ้ามี)
-      window.location.href = '/garage'; // หรือใช้ useNavigate จาก react-router-dom
+      navigate('/garage'); // นำทางไปหน้า Garage
+    } else if (label === 'DEALERSHIP') {
+      navigate('/dealership'); // นำทางไปหน้า Dealership
+    } else if (label === 'RACE') {
+      alert('Race functionality coming soon!'); // ตัวอย่างสำหรับ RACE
     }
-
-    // เพิ่ม logic อื่นๆ ตาม label ได้ในอนาคต เช่น RACE หรือ DEALERSHIP
   };
 
   return (

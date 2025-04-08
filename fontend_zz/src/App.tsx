@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import MainMenu from './components/MainMenu';
 import GameCanvas from './components/GameCanvas';
 import Garage from './components/Garage';
+import Dealership from './components/dealership';
 
 function App() {
   const mockData = {
@@ -38,6 +39,7 @@ function App() {
             </main>
           } />
           <Route path="/garage" element={<Garage />} />
+          <Route path="/dealership" element={<Dealership />} />
         </Routes>
       </div>
     </Router>
