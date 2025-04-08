@@ -17,7 +17,7 @@ const MainMenu: React.FC = () => {
     } else if (label === 'DEALERSHIP') {
       navigate('/dealership'); // นำทางไปหน้า Dealership
     } else if (label === 'RACE') {
-      alert('Race functionality coming soon!'); // ตัวอย่างสำหรับ RACE
+      navigate('/carrace'); // ตัวอย่างสำหรับ RACE
     }
   };
 

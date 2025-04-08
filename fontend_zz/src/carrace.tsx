@@ -382,7 +382,7 @@ export default function CarRace(): React.ReactElement {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-blue-400 to-blue-600">
       {isGameOver ? (
-        // Results screen
+        
         <div className="flex flex-col items-center justify-center h-full bg-black bg-opacity-90 text-white p-4 overflow-y-auto">
           <h1 className="text-4xl font-bold mb-8">Race Results</h1>
           <div className="w-full max-w-2xl bg-gray-800 rounded-lg p-6 mb-8">
@@ -408,7 +408,7 @@ export default function CarRace(): React.ReactElement {
                   </div>
                   <div className="text-right">
                     <div className="font-bold">Score: {car.score}</div>
-                    {/* Display prize money for top 3 positions */}
+                  
                     {car.position <= 3 && (
                       <div className="text-green-400 font-bold">
                         ${car.prize.toLocaleString()}
@@ -433,7 +433,7 @@ export default function CarRace(): React.ReactElement {
           </button>
         </div>
       ) : (
-        // Game play screen
+        
         <>
           <div className="absolute inset-0 bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500" />
           <div className="absolute top-0 inset-x-0 bg-black bg-opacity-80 text-white p-4 h-20 shadow-lg">

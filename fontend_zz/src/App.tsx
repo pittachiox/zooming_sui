@@ -5,6 +5,7 @@ import GameCanvas from './components/GameCanvas';
 import Garage from './components/Garage';
 import Dealership from './components/dealership';
 import { CarProvider } from './components/Carcontext';
+import CarRace from './carrace';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 </div>
               </main>
             } />
+            <Route path="/carrace" element={<CarRace />} />
             <Route path="/garage" element={<Garage />} />
             <Route path="/dealership" element={<Dealership />} />
           </Routes>
