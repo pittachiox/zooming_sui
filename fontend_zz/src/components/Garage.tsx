@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useCarContext } from './Carcontext';
 
 const Garage: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [showCustomParts, setShowCustomParts] = useState(false);
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
+  const { selectedCar } = useCarContext();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -155,7 +157,7 @@ const Garage: React.FC = () => {
     };
 
     redraw();
-  }, [selectedPart]);
+  }, [selectedPart, selectedCar]);
 
   return (
     <div className="relative min-h-screen bg-gray-900 text-white font-pixel">

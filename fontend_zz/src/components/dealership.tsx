@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from 'react';
+import { useCarContext } from './Carcontext';
+
 
 interface Car {
   id: number;
@@ -17,6 +19,7 @@ const cars: Car[] = [
 
 const Dealership: React.FC = () => {
   const canvasRefs = useRef<(HTMLCanvasElement | null)[]>([]);
+  const { setSelectedCar } = useCarContext();
 
   useEffect(() => {
     cars.forEach((car, index) => {
@@ -63,10 +66,14 @@ const Dealership: React.FC = () => {
     });
   }, []);
 
+  const handleBuyCar = (car: Car) => {
+    setSelectedCar(car);
+    alert(`You bought ${car.name} for $${car.price.toLocaleString()}!`);
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white font-pixel">
       <div className="container mx-auto px-4 py-10">
-        {/* เพิ่ม margin-top เพื่อเลื่อนคำว่า DEALERSHIP ลงมา */}
         <h2 className="text-4xl text-center mb-8 drop-shadow mt-16">DEALERSHIP</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,7 +95,7 @@ const Dealership: React.FC = () => {
               <p className="text-lg text-yellow-400">${car.price.toLocaleString()}</p>
               <button
                 className="mt-4 bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded-md"
-                onClick={() => alert(`You bought ${car.name} for $${car.price.toLocaleString()}!`)}
+                onClick={() => handleBuyCar(car)}
               >
                 Buy Now
               </button>

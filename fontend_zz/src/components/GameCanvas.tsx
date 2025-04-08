@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { useCarContext } from './Carcontext';
 
 const GameCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { selectedCar } = useCarContext();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -16,7 +18,7 @@ const GameCanvas: React.FC = () => {
 
     // Car colors
     const colors = {
-      body: '#FF4081',      // Bright pink
+      body: selectedCar?.color || '#FF4081', // Use selected car color or default
       windows: '#81D4FA',   // Light blue
       wheels: '#424242',    // Dark grey
       rims: '#FFFFFF',      // White
@@ -33,7 +35,7 @@ const GameCanvas: React.FC = () => {
     // Draw car with pixel art style
     const drawCar = (x: number, y: number, bounce: number) => {
       // Car shadow
-      drawPixelRect(x - 5, y + 70 - bounce/2, 110, 10, 'rgba(0,0,0,0.2)');
+      drawPixelRect(x - 5, y + 70 - bounce / 2, 110, 10, 'rgba(0,0,0,0.2)');
     
       // --- Spoiler ---
       drawPixelRect(x - 10, y - 10 + bounce, 10, 5, colors.shadow); // spoiler support
@@ -77,7 +79,6 @@ const GameCanvas: React.FC = () => {
         ctx.stroke();
       }
     };
-    
 
     // Draw road with pixel art style
     const drawRoad = () => {
@@ -131,7 +132,7 @@ const GameCanvas: React.FC = () => {
     };
 
     animate();
-  }, []);
+  }, [selectedCar]);
 
   return (
     <canvas
